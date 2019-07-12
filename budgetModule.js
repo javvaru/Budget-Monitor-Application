@@ -8,7 +8,7 @@ var budgetModule = (function () {
         this.percentage = -1;
     }
     
-    Expense.prototype.calcPercentage = function (totIncome) {
+    Expense.prototype.calcPercentage =  function (totIncome) {
         if (totIncome > 0)
             this.percentage = Math.round(this.amount * 100 / totIncome);
         else
@@ -53,7 +53,7 @@ var budgetModule = (function () {
         return newItem;
     }
     
-    var calculateBudget = (type, amount) => {
+    var calculateBudget = function (type, amount) {
         //update respective totals
         data.totals[type] += amount;
 
@@ -66,9 +66,9 @@ var budgetModule = (function () {
             data.percentage = Math.round(data.totals.exp * 100 / data.totals.inc);
     }
     
-    var deleteItem = (type, id) => {
+    var deleteItem = function (type, id) {
         let deletedItem;
-        data.items[type] = data.items[type].filter((item) => {
+        data.items[type] = data.items[type].filter(function (item) {
             if (item.id !== parseInt(id)) {
                 return item;
             } else {
@@ -91,13 +91,13 @@ var budgetModule = (function () {
         },
         deleteItemFromDS: deleteItem,
         calculatePercentages: function () {
-            data.items.exp.forEach((cur) => {
+            data.items.exp.forEach(function(cur) {
                 cur.calcPercentage(data.totals.inc);
             });
         },
         getPercentages: function () {
             let percentageList = [];
-            data.items.exp.forEach((obj) => {
+            data.items.exp.forEach(function (obj) {
                 percentageList.push(obj.getPercentage());
             });
             return percentageList;
