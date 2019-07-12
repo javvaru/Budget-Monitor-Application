@@ -18,7 +18,7 @@ var controllerModule = (function (budgetModule, UIModule) {
     var setUpEventListeners = function() {
         document.querySelector(DOMStrings.addBtn).addEventListener("click", addItemToBudget);
     
-        document.addEventListener("keypress", (event) => {
+        document.addEventListener("keypress", function (event) {
             if (event.keyCode === 13 || event.which === 13)
                 addItemToBudget();
         });
@@ -65,7 +65,7 @@ var controllerModule = (function (budgetModule, UIModule) {
         
     }
     
-    var deleteItem = (event) => {
+    var deleteItem = function (event) {
         if (event.target.classList[0] === "ion-ios-close-outline"){
             let itemNode, id, type, split, deletedItem;
             itemNode = event.target.parentNode.parentNode.parentNode.parentNode;
@@ -87,7 +87,7 @@ var controllerModule = (function (budgetModule, UIModule) {
         }
     }
     
-    var  updatePercentages = () => {
+    var  updatePercentages = function() {
         let perList;
         //calculate percentages
         budgetModule.calculatePercentages();
