@@ -52,7 +52,7 @@ var UIModule = (function () {
         elementContainer.insertAdjacentHTML("beforeend", actualHtml);
     }
     
-    var clearDomFields = () => {
+    var clearDomFields = function () {
         let fields, arrOfFields;
             
         fields = document.querySelectorAll(DOMStrings.inputDescription +", " + DOMStrings.inputAmount);
@@ -106,7 +106,6 @@ var UIModule = (function () {
         let fields = document.querySelectorAll(DOMStrings.inputType + "," +
                                            DOMStrings.inputDescription + "," +
                                            DOMStrings.inputAmount);
-        console.log(fields);
         nodeEleForEach(fields, function(field){
             field.classList.toggle("red-focus");
         });
@@ -127,7 +126,7 @@ var UIModule = (function () {
         addNewItem: addNewItem,
         clearFields: clearDomFields,
         displayBudget: displayBudget,
-        deleteItemFromUI: (node) => {
+        deleteItemFromUI: function (node) {
             document.getElementById(node.id).parentNode.removeChild(node);
         },
         displayPercentages: displayPercentages,
